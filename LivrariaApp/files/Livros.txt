@@ -1,0 +1,4 @@
+1;O Senhor dos Anéis;J.R.R. Tolkien;Ficção;49.90;9780544003415;capa_senhor_dos_aneis.jpg;Uma das mais importantes obras de fantasia e ficção do século XX.
+2;1984;George Orwell;Ficção Distópica;39.90;9780451524935;capa_1984.jpg;Um clássico da literatura mundial, que introduziu conceitos como Big Brother e duplipensar.
+3;Dom Casmurro;Machado de Assis;Romance;29.90;9788535921891;capa_dom_casmurro.jpg;Uma das obras mais famosas de Machado de Assis, que conta a história de Bentinho e Capitu.
+4;O Pequeno Príncipe;Antoine de Saint-Exupéry;Infantil;19.90;9788595080805;capa_pequeno_principe.jpg;Um livro encantador que revela a essência perdida dos adultos através de um menino viajante.
