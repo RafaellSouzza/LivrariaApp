@@ -66,8 +66,8 @@ Atualizar Livro: Permite ao usuário modificar as informações de um livro já 
 ## Entidades Identificadas
 
 1. **Livro**
-- Descrição: Representa os detalhes de um livro disponível na Livraria App.
-- Campos:
+- **Descrição:** Representa os detalhes de um livro disponível na Livraria App.
+- **Campos:**
 - - ID do Livro: um identificador único para o livro.
 - - Título: o nome do livro.
 - - Autor: o(s) autor(es) do livro.
@@ -76,7 +76,7 @@ Atualizar Livro: Permite ao usuário modificar as informações de um livro já 
 - - ISBN: número padrão internacional do livro.
 - - Capa: uma imagem ou design da capa do livro.
 - - Descrição: uma sinopse ou informações adicionais sobre o livro.
-- Relacionamento:
+- **Relacionamento:**
 - - Está associado a zero ou mais pedidos (através de Itens de Pedido).
 - - Pode ser adicionado, removido ou atualizado pelo Usuário ou Administrador.
 
@@ -84,61 +84,133 @@ Atualizar Livro: Permite ao usuário modificar as informações de um livro já 
 2. **Usuário**
 - **Descrição:** Alguém que usa o Livraria App para explorar e interagir com a lista de livros.
 - **Campos:**
-- ID do Usuário: um identificador único para o usuário.
-- Nome: o nome completo do usuário.
-- Email: o endereço de e-mail do usuário para contato.
-- Senha: uma senha para a conta do usuário.
+- -  ID do Usuário: um identificador único para o usuário.
+- -  Nome: o nome completo do usuário.
+- -  Email: o endereço de e-mail do usuário para contato.
+- -  Senha: uma senha para a conta do usuário.
 - **Relacionamento:**
-- Pode criar, atualizar ou remover um Livro (se tiver permissões).
-- Pode realizar um Pedido.
+- -  Pode criar, atualizar ou remover um Livro (se tiver permissões).
+- -  Pode realizar um Pedido.
 
 3. **Pedido**
 - **Descrição:** Registra a aquisição de um ou mais livros por um usuário.
 - **Campos:**
-- ID do Pedido: um identificador único para o pedido.
-- Data do Pedido: a data e hora em que o pedido foi realizado.
-- Status: o estado atual do pedido (por exemplo, pendente, pago, enviado).
-- Usuário ID: o identificador do usuário que realizou o pedido.
+- -  ID do Pedido: um identificador único para o pedido.
+- -  Data do Pedido: a data e hora em que o pedido foi realizado.
+- -  Status: o estado atual do pedido (por exemplo, pendente, pago, enviado).
+- -  Usuário ID: o identificador do usuário que realizou o pedido.
 - **Relacionamento:**
-- Associa um ou mais livros ao usuário que fez o pedido (através de Itens de Pedido).
-- Um usuário pode ter vários Pedidos.
+- -  Associa um ou mais livros ao usuário que fez o pedido (através de Itens de Pedido).
+- -  Um usuário pode ter vários Pedidos.
 
 4. **Item de Pedido**
 - **Descrição:** Associa um livro específico a um pedido, possibilitando a compra de múltiplos livros em um único pedido.
 - **Campos:**
-- ID do Item de Pedido: um identificador único para o item de pedido.
+- -  ID do Item de Pedido: um identificador único para o item de pedido.
 - Pedido ID: o identificador do pedido ao qual o item pertence.
-- Livro ID: o identificador do livro que está sendo comprado.
-- Quantidade: a quantidade do livro pedido.
-- Preço Unitário: o preço de cada livro no momento do pedido.
+- -  Livro ID: o identificador do livro que está sendo comprado.
+- -  Quantidade: a quantidade do livro pedido.
+- - Preço Unitário: o preço de cada livro no momento do pedido.
 - **Relacionamento:**
-- Associa um Livro a um Pedido.
-- Um Pedido pode ter vários Itens de Pedido.
+- -  Associa um Livro a um Pedido.
+- -  Um Pedido pode ter vários Itens de Pedido.
 
 5. **Administrador**
 - **Descrição:** Um tipo especial de usuário com permissões avançadas para gerenciar a Livraria App.
 - **Campos:**
-- ID do Administrador: um identificador único para o administrador.
-- Nome de Usuário: o nome de usuário para o administrador logar no sistema.
-- Senha: uma senha para a conta do administrador.
+- -  ID do Administrador: um identificador único para o administrador.
+- -  Nome de Usuário: o nome de usuário para o administrador logar no sistema.
+- -  Senha: uma senha para a conta do administrador.
 - **Relacionamento:**
-- Tem as permissões para realizar qualquer ação sobre os Livros e Pedidos.
-- Pode monitorar as atividades dos Usuários.
+- -  Tem as permissões para realizar qualquer ação sobre os Livros e Pedidos.
+- -  Pode monitorar as atividades dos Usuários.
 
 
-## Diagrama de Classes
+# Diagrama de Classes
 
-- **Livro:** Detalha os atributos de um livro...
-- **Usuário:** Representa um usuário da plataforma...
-- **Pedido:** Registra os pedidos feitos pelos usuários...
+## Livro
+Detalha os atributos de um livro, como ID, título, autor, gênero, preço, ISBN, capa e descrição. Está associado a zero ou mais pedidos através de itens de pedido e pode ser modificado por usuários ou administradores.
 
-## Diagrama de Estados
+## Usuário
+Representa um usuário da plataforma, com campos como ID, nome, email e senha. Pode criar, atualizar ou remover um livro (se tiver permissões) e realizar pedidos.
 
-- **Estado do Livro:** O livro começa no estado "Disponível"...
-- **Estado do Pedido:** O pedido é "Criado" inicialmente...
+## Pedido
+Registra os pedidos feitos pelos usuários, incluindo ID do pedido, data, status e ID do usuário. Associa um ou mais livros ao usuário que fez o pedido através de itens de pedido.
 
-## Diagrama de Atividades
+## Item de Pedido
+Associa livros a pedidos específicos, com campos como ID do item, ID do pedido, ID do livro, quantidade e preço unitário. Cada pedido pode ter vários itens de pedido.
 
-- **Lista de Livros:** Este processo permite ao usuário visualizar...
-- **Selecionar Livro:** A partir da lista, o usuário seleciona um livro...
+## Administrador
+Um tipo especial de usuário com permissões avançadas, incluindo ID, nome de usuário e senha. Tem permissões para realizar qualquer ação sobre os livros e pedidos e pode monitorar as atividades dos usuários.
+
+<img src="/assets/img/DiagramaClasses.png">
+
+
+
+# Diagrama de Estados
+
+## Estado do Livro
+- O livro começa no estado **"Disponível"**.
+- Pode ser **"Adicionado"** à lista.
+- Uma vez adicionado, pode ser **"Atualizado"** ou **"Removido"**, retornando ao estado **"Disponível"**.
+
+## Estado do Pedido
+- O pedido é **"Criado"** inicialmente.
+- Passa para o estado **"Pendente"** após a realização.
+- Muda para **"Pago"** após o pagamento.
+- Finalmente, torna-se **"Enviado"**, concluindo o ciclo do pedido.
+
+## Estado do Administrador
+- O administrador inicia no estado **"Ativo"**.
+- Entra no estado **"Gerenciando"** ao gerenciar livros ou pedidos.
+- Retorna ao estado **"Ativo"** após concluir o gerenciamento.
+
+<img src="/assets/img/DiagramaEstado.png">
+
+
+# **Diagrama de Atividades**
+
+## Lista de Livros
+
+Este processo permite ao usuário visualizar todos os livros disponíveis. A partir daqui, o usuário pode realizar duas ações:
+
+### Seleção por Gênero
+Filtra a lista de livros de acordo com o gênero desejado.
+
+### Detalhes do Livro
+Fornece informações mais específicas sobre um livro selecionado, como nome, preço, capa, entre outros detalhes.
+
+## Adicionar Livro
+Esta função possibilita ao usuário inserir um novo livro no sistema, preenchendo as informações necessárias como gênero, nome, preço, capa e outros detalhes relevantes.
+
+## Remover Livro
+Permite ao usuário selecionar um livro existente e removê-lo da lista de livros disponíveis.
+
+## Atualizar Livro
+Oferece a opção de modificar as informações de um livro já listado.
+
+<img src="/assets/img/DiagramaAtividadeFuncionalidade.png">
+
+## Lista de Livros
+
+### Selecionar Livro
+A partir da lista, o usuário seleciona um livro específico para obter mais informações.
+
+### Visualizar Detalhes do Livro
+Esta etapa se ramifica em quatro opções distintas, onde o usuário pode visualizar diferentes tipos de informações sobre o livro escolhido:
+
+### Informações Básicas
+Detalhes fundamentais do livro, como título, autor e sinopse.
+
+### Preço
+O custo do livro.
+
+### Capa
+Uma imagem ou representação gráfica da capa do livro.
+
+### Informações Adicionais
+Outros dados relevantes que não se enquadram nas categorias anteriores, possivelmente incluindo comentários, avaliações, ano de publicação, etc.
+
+<img src="/assets/img/DiagramaAtividadeDetalhes.png">
+
 
