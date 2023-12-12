@@ -1,9 +1,9 @@
-# ESTI – ESCOLA SUPERIOR DA TECNOLOGIA DA INFORMAÇÃO
+<img src="https://www.infnet.edu.br/infnet/wp-content/uploads/sites/6/2022/03/infnet_versao-principal-01-1536x464.jpg">
 ## GRADUAÇÃO EM ENGENHARIA DE COMPUTAÇÃO
 
 ### Matéria: Desenvolvimento Back-End
 
-#### Professor: Rafael Soares de Souza
+#### Aluno: Rafael Soares de Souza
 
 ## Índice
 
