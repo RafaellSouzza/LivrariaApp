@@ -68,17 +68,17 @@ Atualizar Livro: Permite ao usuário modificar as informações de um livro já 
 1. **Livro**
 - Descrição: Representa os detalhes de um livro disponível na Livraria App.
 - Campos:
--- ID do Livro: um identificador único para o livro.
--- Título: o nome do livro.
--- Autor: o(s) autor(es) do livro.
--- Gênero: a categoria ou gênero literário do livro.
--- Preço: o custo de compra do livro.
--- ISBN: número padrão internacional do livro.
--- Capa: uma imagem ou design da capa do livro.
--- Descrição: uma sinopse ou informações adicionais sobre o livro.
+- - ID do Livro: um identificador único para o livro.
+- - Título: o nome do livro.
+- - Autor: o(s) autor(es) do livro.
+- - Gênero: a categoria ou gênero literário do livro.
+- - Preço: o custo de compra do livro.
+- - ISBN: número padrão internacional do livro.
+- - Capa: uma imagem ou design da capa do livro.
+- - Descrição: uma sinopse ou informações adicionais sobre o livro.
 - Relacionamento:
--- Está associado a zero ou mais pedidos (através de Itens de Pedido).
--- Pode ser adicionado, removido ou atualizado pelo Usuário ou Administrador.
+- - Está associado a zero ou mais pedidos (através de Itens de Pedido).
+- - Pode ser adicionado, removido ou atualizado pelo Usuário ou Administrador.
 
 
 2. **Usuário**
