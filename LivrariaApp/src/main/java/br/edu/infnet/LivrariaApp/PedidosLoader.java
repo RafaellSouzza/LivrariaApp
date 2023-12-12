@@ -10,10 +10,10 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import br.edu.infnet.LivrariaApp.modal.service.PedidoService;
-import br.edu.infnet.LivrariaApp.modal.service.UsuarioService;
 import br.edu.infnet.LivrariaApp.model.domain.Pedido;
 import br.edu.infnet.LivrariaApp.model.domain.Usuario;
+import br.edu.infnet.LivrariaApp.model.service.PedidoService;
+import br.edu.infnet.LivrariaApp.model.service.UsuarioService;
 
 @Component
 @Order(3)

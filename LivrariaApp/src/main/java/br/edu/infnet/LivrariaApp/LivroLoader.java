@@ -9,8 +9,8 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import br.edu.infnet.LivrariaApp.modal.service.LivroService;
 import br.edu.infnet.LivrariaApp.model.domain.Livro;
+import br.edu.infnet.LivrariaApp.model.service.LivroService;
 
 @Component
 @Order(2)

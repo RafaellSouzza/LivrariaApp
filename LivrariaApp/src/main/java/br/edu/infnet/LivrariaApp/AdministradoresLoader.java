@@ -9,8 +9,8 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import br.edu.infnet.LivrariaApp.modal.service.AdministradorService;
 import br.edu.infnet.LivrariaApp.model.domain.Administrador;
+import br.edu.infnet.LivrariaApp.model.service.AdministradorService;
 
 @Component
 @Order(4)

@@ -1,4 +1,4 @@
-package br.edu.infnet.LivrariaApp.modal.service;
+package br.edu.infnet.LivrariaApp.model.service;
 
 import java.util.ArrayList;
 import java.util.Collection;
