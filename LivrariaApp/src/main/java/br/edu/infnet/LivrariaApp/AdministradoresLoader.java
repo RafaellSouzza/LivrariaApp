@@ -2,19 +2,22 @@ package br.edu.infnet.LivrariaApp;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.HashMap;
-import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import br.edu.infnet.LivrariaApp.modal.service.AdministradorService;
 import br.edu.infnet.LivrariaApp.model.domain.Administrador;
 
 @Component
 public class AdministradoresLoader implements ApplicationRunner {
 
-    private Map<Long, Administrador> map = new HashMap<Long, Administrador>();
+	
+	@Autowired
+	private AdministradorService administradorService;
+    
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -34,12 +37,12 @@ public class AdministradoresLoader implements ApplicationRunner {
             administrador.setNomeDeUsuario(campos[1]);
             administrador.setSenha(campos[2]);
 
-            map.put(administrador.getId(), administrador);
+            administradorService.incluir(administrador);
 
             linha = leitura.readLine();
         }
 
-        for (Administrador administrador : map.values()) {
+        for (Administrador administrador : administradorService.obterLista()) {
             System.out.println("[Administrador]" + administrador);
         }
 

@@ -2,19 +2,21 @@ package br.edu.infnet.LivrariaApp;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.HashMap;
-import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import br.edu.infnet.LivrariaApp.modal.service.ItemDePedidoService;
 import br.edu.infnet.LivrariaApp.model.domain.ItemDePedido;
 
 @Component
 public class ItensDePedidosLoader implements ApplicationRunner {
 
-	private Map<Long,ItemDePedido> map = new HashMap<Long, ItemDePedido>();
+	
+	@Autowired
+	private ItemDePedidoService itemDePedidoService;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -35,12 +37,12 @@ public class ItensDePedidosLoader implements ApplicationRunner {
             itemDePedido.setQuantidade(Integer.parseInt(campos[2]));
             itemDePedido.setPrecoUnitario(Float.parseFloat(campos[3]));
 
-            map.put(itemDePedido.getId(), itemDePedido);
+            itemDePedidoService.incluir(itemDePedido);
 
             linha = leitura.readLine();
         }
 
-        for (ItemDePedido item : map.values()) {
+        for (ItemDePedido item :itemDePedidoService.obterLista()) {
             System.out.println("[ItemDePedido]" + item);
         }
 

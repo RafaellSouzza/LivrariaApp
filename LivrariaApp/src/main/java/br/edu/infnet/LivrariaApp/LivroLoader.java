@@ -2,19 +2,21 @@ package br.edu.infnet.LivrariaApp;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.HashMap;
-import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import br.edu.infnet.LivrariaApp.modal.service.LivroService;
 import br.edu.infnet.LivrariaApp.model.domain.Livro;
 
 @Component
 public class LivroLoader implements ApplicationRunner {
 
-	private Map<Long,Livro> map = new HashMap<Long, Livro>();
+	
+	@Autowired
+	private LivroService livroService;
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
@@ -39,12 +41,13 @@ public class LivroLoader implements ApplicationRunner {
         	livro.setCapa(campos[6]);
         	livro.setDescricao(campos[7]);
         	
-        	map.put(livro.getId(), livro);
+        	 livroService.incluir(livro);
+
         	
         	linha = leitura.readLine();
         }
         
-        for (Livro livro : map.values()) {
+        for (Livro livro : livroService.obterLista()) {
         	System.out.println("[Livro]" + livro);
 		}
         

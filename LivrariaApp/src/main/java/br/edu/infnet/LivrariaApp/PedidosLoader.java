@@ -4,19 +4,20 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
-import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import br.edu.infnet.LivrariaApp.modal.service.PedidoService;
 import br.edu.infnet.LivrariaApp.model.domain.Pedido;
 
 @Component
 public class PedidosLoader implements ApplicationRunner {
 
-	private Map<Long,Pedido> map = new HashMap<Long, Pedido>();
+	@Autowired
+	private PedidoService pedidoService;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -26,26 +27,24 @@ public class PedidosLoader implements ApplicationRunner {
         
         String linha = leitura.readLine();
         String[] campos;
-        
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        
+                
         while (linha != null) {
             
             campos = linha.split(";");
             
             Pedido pedido = new Pedido();
             pedido.setId(Long.parseLong(campos[0]));
-            pedido.setData(LocalDateTime.parse(campos[1], formatter));
-            pedido.setStatus(campos[2]);
+            pedido.setData(LocalDateTime.parse(campos[1]));
+            pedido.setStatus(Boolean.parseBoolean(campos[2]));
             pedido.setUsuarioID(campos[3]);
             
   
-            map.put(pedido.getId(), pedido);
+            pedidoService.incluir(pedido);
             
             linha = leitura.readLine();
         }
         
-        for (Pedido pedido : map.values()) {
+        for (Pedido pedido : pedidoService.obterLista()) {
             System.out.println("[Pedido]" + pedido);
         }
         

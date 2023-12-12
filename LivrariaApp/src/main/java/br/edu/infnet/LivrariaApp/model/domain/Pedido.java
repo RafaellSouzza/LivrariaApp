@@ -5,13 +5,13 @@ public class Pedido {
 
     private Long id;
     private LocalDateTime data;
-    private String status;
+    private Boolean status;
     private String usuarioID;
 
     public Pedido() {
     }
 
-    public Pedido(Long id, LocalDateTime data, String status, String usuarioID) {
+    public Pedido(Long id, LocalDateTime data, Boolean status, String usuarioID) {
         this.id = id;
         this.data = data;
         this.status = status;
@@ -34,11 +34,11 @@ public class Pedido {
         this.data = data;
     }
 
-    public String getStatus() {
+    public Boolean getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Boolean status) {
         this.status = status;
     }
 
