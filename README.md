@@ -82,26 +82,48 @@ Atualizar Livro: Permite ao usuário modificar as informações de um livro já 
 
 
 2. **Usuário**
-- Descrição: Alguém que usa o Livraria App para explorar e interagir com a lista de livros.
-- Campos:
--- ID do Usuário: um identificador único para o usuário.
--- Nome: o nome completo do usuário.
--- Email: o endereço de e-mail do usuário para contato.
--- Senha: uma senha para a conta do usuário.
-- Relacionamento:
--- Pode criar, atualizar ou remover um Livro (se tiver permissões).
--- Pode realizar um Pedido.
+- **Descrição:** Alguém que usa o Livraria App para explorar e interagir com a lista de livros.
+- **Campos:**
+- ID do Usuário: um identificador único para o usuário.
+- Nome: o nome completo do usuário.
+- Email: o endereço de e-mail do usuário para contato.
+- Senha: uma senha para a conta do usuário.
+- **Relacionamento:**
+- Pode criar, atualizar ou remover um Livro (se tiver permissões).
+- Pode realizar um Pedido.
 
 3. **Pedido**
-- Descrição: Registra a aquisição de um ou mais livros por um usuário.
-- Campos:
--- ID do Pedido: um identificador único para o pedido.
--- Data do Pedido: a data e hora em que o pedido foi realizado.
--- Status: o estado atual do pedido (por exemplo, pendente, pago, enviado).
--- Usuário ID: o identificador do usuário que realizou o pedido.
-- Relacionamento:
--- Associa um ou mais livros ao usuário que fez o pedido (através de Itens de Pedido).
--- Um usuário pode ter vários Pedidos.
+- **Descrição:** Registra a aquisição de um ou mais livros por um usuário.
+- **Campos:**
+- ID do Pedido: um identificador único para o pedido.
+- Data do Pedido: a data e hora em que o pedido foi realizado.
+- Status: o estado atual do pedido (por exemplo, pendente, pago, enviado).
+- Usuário ID: o identificador do usuário que realizou o pedido.
+- **Relacionamento:**
+- Associa um ou mais livros ao usuário que fez o pedido (através de Itens de Pedido).
+- Um usuário pode ter vários Pedidos.
+
+4. **Item de Pedido**
+- **Descrição:** Associa um livro específico a um pedido, possibilitando a compra de múltiplos livros em um único pedido.
+- **Campos:**
+- ID do Item de Pedido: um identificador único para o item de pedido.
+- Pedido ID: o identificador do pedido ao qual o item pertence.
+- Livro ID: o identificador do livro que está sendo comprado.
+- Quantidade: a quantidade do livro pedido.
+- Preço Unitário: o preço de cada livro no momento do pedido.
+- **Relacionamento:**
+- Associa um Livro a um Pedido.
+- Um Pedido pode ter vários Itens de Pedido.
+
+5. **Administrador**
+- **Descrição:** Um tipo especial de usuário com permissões avançadas para gerenciar a Livraria App.
+- **Campos:**
+- ID do Administrador: um identificador único para o administrador.
+- Nome de Usuário: o nome de usuário para o administrador logar no sistema.
+- Senha: uma senha para a conta do administrador.
+- **Relacionamento:**
+- Tem as permissões para realizar qualquer ação sobre os Livros e Pedidos.
+- Pode monitorar as atividades dos Usuários.
 
 
 ## Diagrama de Classes
