@@ -6,12 +6,14 @@ import java.io.FileReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.LivrariaApp.modal.service.LivroService;
 import br.edu.infnet.LivrariaApp.model.domain.Livro;
 
 @Component
+@Order(2)
 public class LivroLoader implements ApplicationRunner {
 
 	
@@ -32,7 +34,7 @@ public class LivroLoader implements ApplicationRunner {
         	campos = linha.split(";");
         	
         	Livro livro = new Livro();
-        	livro.setId( Long.parseLong(campos[0]));
+        	livro.setId(Integer.valueOf(campos[0]));
         	livro.setTitulo(campos[1]);
         	livro.setAutor(campos[2]);
         	livro.setGenero(campos[3]);

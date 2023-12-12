@@ -6,12 +6,14 @@ import java.io.FileReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.LivrariaApp.modal.service.AdministradorService;
 import br.edu.infnet.LivrariaApp.model.domain.Administrador;
 
 @Component
+@Order(4)
 public class AdministradoresLoader implements ApplicationRunner {
 
 	
@@ -33,7 +35,7 @@ public class AdministradoresLoader implements ApplicationRunner {
             campos = linha.split(";");
 
             Administrador administrador = new Administrador();
-            administrador.setId(Long.parseLong(campos[0]));
+            administrador.setId(Integer.valueOf(campos[0]));
             administrador.setNomeDeUsuario(campos[1]);
             administrador.setSenha(campos[2]);
 

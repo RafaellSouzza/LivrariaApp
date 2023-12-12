@@ -1,25 +1,41 @@
 package br.edu.infnet.LivrariaApp.model.domain;
 
-public class Administrador {
+import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
-    private Long id;
+@Table(name = "TB_Administrador")
+@Entity
+@DiscriminatorValue("ADMIN")
+public class Administrador extends Usuario{
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String nomeDeUsuario;
     private String senha;
+    @Column(name = "area_responsabilidade")
+    private String areaDeResponsabilidade;
 
     public Administrador() {
     }
 
-    public Administrador(Long id, String nomeDeUsuario, String senha) {
+    public Administrador(Integer id, String nomeDeUsuario, String senha,String areaDeResponsabilidade) {
         this.id = id;
         this.nomeDeUsuario = nomeDeUsuario;
         this.senha = senha;
+        this.areaDeResponsabilidade = areaDeResponsabilidade;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -37,6 +53,14 @@ public class Administrador {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+    
+    public String getAreaDeResponsabilidade() {
+        return areaDeResponsabilidade;
+    }
+
+    public void setAreaDeResponsabilidade(String areaDeResponsabilidade) {
+        this.areaDeResponsabilidade = areaDeResponsabilidade;
     }
 
     @Override

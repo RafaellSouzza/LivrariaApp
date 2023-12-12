@@ -1,24 +1,27 @@
 package br.edu.infnet.LivrariaApp.modal.service;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.LivrariaApp.model.domain.ItemDePedido;
+import br.edu.infnet.LivrariaApp.model.repositories.ItemDePedidoRepository;
+
+
 
 @Service
 public class ItemDePedidoService {
 
-    private Map<Long, ItemDePedido> mapa = new HashMap<>();
+	@Autowired
+    private ItemDePedidoRepository itemDePedidoRepository;
 
     public void incluir(ItemDePedido itemDePedido) {
-        mapa.put(itemDePedido.getId(), itemDePedido);
+    	itemDePedidoRepository.save( itemDePedido);
     }
 
     public Collection<ItemDePedido> obterLista() {
-        return mapa.values();
+        return  (Collection<ItemDePedido>) itemDePedidoRepository.findAll();
     }
 
 }
