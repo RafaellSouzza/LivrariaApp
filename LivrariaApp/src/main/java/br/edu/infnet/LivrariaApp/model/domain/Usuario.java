@@ -2,21 +2,18 @@ package br.edu.infnet.LivrariaApp.model.domain;
 
 import org.springframework.core.annotation.Order;
 
-import jakarta.persistence.DiscriminatorColumn;
-import jakarta.persistence.DiscriminatorType;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Order(1)
-@Table(name = "TB_Usuario")
+@Table(name = "tb_usuario")
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "tipo_usuario", discriminatorType = DiscriminatorType.STRING)
 public class Usuario {
 
 	@Id
@@ -25,16 +22,23 @@ public class Usuario {
     private String nome;
     private String email;
     private String senha;
+    private String cep;
+    
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "endereco_id")
+    private Endereco endereco;
+     
 
    
-    public Usuario() {
-    }
+    
 
-    public Usuario(Integer id, String nome, String email, String senha) {
+    public Usuario(Integer id, String nome, String email, String senha, String cep, Endereco endereco) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
+        this.cep = cep;
+        this.endereco = endereco;
     }
 
     public Integer getId() {
@@ -68,14 +72,36 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+    
+    public String getCep() {
+		return cep;
+	}
 
-    @Override
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+
+	public Usuario() {
+    }
+	
+	
+
+    public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
+	@Override
     public String toString() {
         return "Usuario{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", email='" + email + '\'' +
                 ", senha='" + senha + '\'' +
+                ", senha='" + cep + '\'' +
                 '}';
     }
 }

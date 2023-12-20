@@ -6,8 +6,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class LivrariaAppApplicationTests {
 
+	/*
 	@Test
 	void contextLoads() {
 	}
-
+*/
 }

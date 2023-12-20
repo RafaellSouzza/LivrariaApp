@@ -9,7 +9,9 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import br.edu.infnet.LivrariaApp.model.domain.Endereco;
 import br.edu.infnet.LivrariaApp.model.domain.Usuario;
+import br.edu.infnet.LivrariaApp.model.service.EnderecoService;
 import br.edu.infnet.LivrariaApp.model.service.UsuarioService;
 
 @Component
@@ -19,10 +21,13 @@ public class UsuariosLoader implements ApplicationRunner {
 	
 	@Autowired
 	private UsuarioService usuarioService;
+	
+	@Autowired
+	private EnderecoService enderecoService;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-
+    	
         FileReader file = new FileReader("files/Usuarios.txt");
         BufferedReader leitura = new BufferedReader(file);
 
@@ -38,7 +43,13 @@ public class UsuariosLoader implements ApplicationRunner {
             usuario.setNome(campos[1]);
             usuario.setEmail(campos[2]);
             usuario.setSenha(campos[3]);
+            usuario.setCep(campos[4]);
 
+            
+            Endereco endereco =  enderecoService.buscarCep(campos[4]);
+            
+            usuario.setEndereco(endereco);
+            
             usuarioService.incluir(usuario);
 
             linha = leitura.readLine();

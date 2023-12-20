@@ -1,5 +1,5 @@
-1;Alice;alice1@example.com;senha9544
-2;Rafael;Rafael@test.org;senha9723
-3;Dave;dave3@example.com;senha6868
-4;Eve;eve4@example.com;senha6604
-5;Juliana;Juliana@example.com;senha6321
+1;Alice;alice1@example.com;senha9544;26013520
+2;Rafael;Rafael@test.org;senha9723;26013520
+3;Dave;dave3@example.com;senha6868;26013520
+4;Eve;eve4@example.com;senha6604;26013520
+5;Juliana;Juliana@example.com;senha6321;26013520

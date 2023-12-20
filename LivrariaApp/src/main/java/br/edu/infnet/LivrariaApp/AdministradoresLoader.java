@@ -15,12 +15,8 @@ import br.edu.infnet.LivrariaApp.model.service.AdministradorService;
 @Component
 @Order(4)
 public class AdministradoresLoader implements ApplicationRunner {
-
-	
 	@Autowired
 	private AdministradorService administradorService;
-    
-
     @Override
     public void run(ApplicationArguments args) throws Exception {
 

@@ -3,10 +3,12 @@ package br.edu.infnet.LivrariaApp.model.service;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.edu.infnet.LivrariaApp.model.domain.Endereco;
 import br.edu.infnet.LivrariaApp.model.domain.Livro;
 import br.edu.infnet.LivrariaApp.model.repositories.LivroRepository;
 
@@ -36,5 +38,14 @@ public class LivroService {
     		}
 		} 
     	return  (List<Livro>) livros;
+    }
+    
+    public Optional<Livro> buscarPorId(Integer id) {
+        Optional<Livro> endereco = livroRepository.findById(id);
+        return endereco;
+    }
+
+    public void excluir(Integer id) {
+    	livroRepository.deleteById(id);
     }
 }

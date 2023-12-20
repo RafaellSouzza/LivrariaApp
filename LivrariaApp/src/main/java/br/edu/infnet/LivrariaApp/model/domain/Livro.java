@@ -1,24 +1,28 @@
 package br.edu.infnet.LivrariaApp.model.domain;
 
-import java.util.List;
+import org.springframework.core.annotation.Order;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
-@Table(name = "TB_Livro")
+@Order(3)
+@Table(name = "tb_livro")
 @Entity
 public class Livro {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-	@ManyToMany(mappedBy = "livros",cascade = CascadeType.ALL)
-	private List<ItemDePedido> itensDePedido;
+	
+	@OneToOne(cascade = CascadeType.PERSIST)
+	@JoinTable(name = "item_id")
+    private ItemDePedido itensDePedido;
     
 
 	private String titulo;
@@ -32,7 +36,7 @@ public class Livro {
     public Livro() {
     }
 
-    public Livro(Integer id, String titulo, String autor, String genero, double preco, String isbn, String capa, String descricao, List<ItemDePedido> itemDePedido) {
+    public Livro(Integer id, String titulo, String autor, String genero, double preco, String isbn, String capa, String descricao, ItemDePedido itemDePedido) {
         this.id = id;
         this.titulo = titulo;
         this.autor = autor;
@@ -108,15 +112,18 @@ public class Livro {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-    public List<ItemDePedido> getItensDePedido() {
+  
+    
+
+    public ItemDePedido getItensDePedido() {
 		return itensDePedido;
 	}
 
-	public void setItensDePedido(List<ItemDePedido> itensDePedido) {
+	public void setItensDePedido(ItemDePedido itensDePedido) {
 		this.itensDePedido = itensDePedido;
 	}
 
-    @Override
+	@Override
     public String toString() {
         return "Livro{" +
                 "id=" + id +

@@ -1,5 +1,7 @@
 package br.edu.infnet.LivrariaApp.model.domain;
 
+import org.springframework.core.annotation.Order;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
@@ -8,9 +10,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-@Table(name = "TB_Administrador")
+@Order(2)
+@Table(name = "tb_administrador")
 @Entity
-@DiscriminatorValue("ADMIN")
 public class Administrador extends Usuario{
 
 	@Id
@@ -18,7 +20,6 @@ public class Administrador extends Usuario{
     private Integer id;
     private String nomeDeUsuario;
     private String senha;
-    @Column(name = "area_responsabilidade")
     private String areaDeResponsabilidade;
 
     public Administrador() {

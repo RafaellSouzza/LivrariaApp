@@ -3,6 +3,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.core.annotation.Order;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -16,8 +18,8 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
-
-@Table(name = "TB_Pedido")
+@Order(4)
+@Table(name = "tb_pedido")
 @Entity
 public class Pedido {
 
@@ -30,12 +32,11 @@ public class Pedido {
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
-    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
-    private List<ItemDePedido> itensDePedido = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.DETACH, fetch = FetchType.EAGER, mappedBy = "pedido")
+    private List<ItemDePedido> itensDePedido;
 
     public Pedido() {
     }
-
 
 	public Pedido(Integer pedido_id, LocalDateTime data, Boolean status, Usuario usuario, List<ItemDePedido> itensDePedido) {
         this.id = pedido_id;

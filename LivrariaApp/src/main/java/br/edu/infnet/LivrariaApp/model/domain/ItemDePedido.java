@@ -1,18 +1,19 @@
 package br.edu.infnet.LivrariaApp.model.domain;
 
-import java.util.List;
+import org.springframework.core.annotation.Order;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
+@Order(5)
 @Table(name = "tb_item_de_pedido")
 @Entity
 public class ItemDePedido {
@@ -20,27 +21,23 @@ public class ItemDePedido {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
     @JoinColumn(name = "pedido_id")
     private Pedido pedido;
-	@ManyToMany(fetch = FetchType.EAGER)
-	 @JoinTable(
-	         name = "item_pedido_livro",
-	         joinColumns = @JoinColumn(name = "item_de_pedido_id"),
-	         inverseJoinColumns = @JoinColumn(name = "livros_id")
-	 )
-	 private List<Livro> livros;
+	@OneToOne(cascade = CascadeType.PERSIST)
+	@JoinTable(name = "livro_id")
+	 private Livro livro;
     private int quantidade;
     private float precoUnitario;
 
     public ItemDePedido() {
     }
 
-    public ItemDePedido(Integer id, Pedido pedido, List<Livro> livros, int quantidade, float precoUnitario) {
+    public ItemDePedido(Integer id, Pedido pedido, Livro livro, int quantidade, float precoUnitario) {
         this.id = id;
         
         this.pedido = pedido;
-        this.livros = livros;
+        this.livro = livro;
         this.quantidade = quantidade;
         this.precoUnitario = precoUnitario;
     }
@@ -61,12 +58,12 @@ public class ItemDePedido {
         this.pedido = pedido;
     }
 
-    public  List<Livro> getLivros() {
-        return livros;
+    public  Livro getLivros() {
+        return livro;
     }
 
-    public void setLivros( List<Livro> livros) {
-        this.livros = livros;
+    public void setLivros( Livro livro) {
+        this.livro = livro;
     }
 
     public int getQuantidade() {
@@ -90,7 +87,7 @@ public class ItemDePedido {
         return "ItemDePedido{" +
                 "id='" + id + '\'' +
                 ", pedidoID='" + pedido + '\'' +
-                ", livroID='" + livros + '\'' +
+                ", livroID='" + livro + '\'' +
                 ", quantidade=" + quantidade +
                 ", precoUnitario=" + precoUnitario +
                 '}';
