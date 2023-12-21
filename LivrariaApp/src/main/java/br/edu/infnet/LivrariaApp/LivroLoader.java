@@ -11,9 +11,8 @@ import org.springframework.stereotype.Component;
 
 import br.edu.infnet.LivrariaApp.model.domain.Livro;
 import br.edu.infnet.LivrariaApp.model.service.LivroService;
-
-@Component
 @Order(2)
+@Component
 public class LivroLoader implements ApplicationRunner {
 
 	

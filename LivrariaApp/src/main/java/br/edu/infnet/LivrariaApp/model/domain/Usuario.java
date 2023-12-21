@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -14,7 +16,8 @@ import jakarta.persistence.Table;
 @Order(1)
 @Table(name = "tb_usuario")
 @Entity
-public class Usuario {
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Usuario extends Administrador {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +31,6 @@ public class Usuario {
     @JoinColumn(name = "endereco_id")
     private Endereco endereco;
      
-
    
     
 

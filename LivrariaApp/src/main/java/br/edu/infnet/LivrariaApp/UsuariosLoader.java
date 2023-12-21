@@ -13,9 +13,8 @@ import br.edu.infnet.LivrariaApp.model.domain.Endereco;
 import br.edu.infnet.LivrariaApp.model.domain.Usuario;
 import br.edu.infnet.LivrariaApp.model.service.EnderecoService;
 import br.edu.infnet.LivrariaApp.model.service.UsuarioService;
-
-@Component
 @Order(1)
+@Component
 public class UsuariosLoader implements ApplicationRunner {
 
 	
@@ -44,11 +43,15 @@ public class UsuariosLoader implements ApplicationRunner {
             usuario.setEmail(campos[2]);
             usuario.setSenha(campos[3]);
             usuario.setCep(campos[4]);
+            
+            usuario.setIsAdmin(false);
 
             
-            Endereco endereco =  enderecoService.buscarCep(campos[4]);
+            Endereco endereco =  enderecoService.buscaEndereco(campos[4]);
             
             usuario.setEndereco(endereco);
+            
+            enderecoService.Salvar(usuario.getEndereco());
             
             usuarioService.incluir(usuario);
 

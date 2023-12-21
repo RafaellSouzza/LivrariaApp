@@ -8,68 +8,31 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.Table;
 
 @Order(2)
-@Table(name = "tb_administrador")
-@Entity
-public class Administrador extends Usuario{
+@MappedSuperclass
+public class Administrador {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private String nomeDeUsuario;
-    private String senha;
-    private String areaDeResponsabilidade;
+	
+    private Boolean isAdmin;
 
     public Administrador() {
+        super();
     }
 
-    public Administrador(Integer id, String nomeDeUsuario, String senha,String areaDeResponsabilidade) {
-        this.id = id;
-        this.nomeDeUsuario = nomeDeUsuario;
-        this.senha = senha;
-        this.areaDeResponsabilidade = areaDeResponsabilidade;
+    public Administrador(Boolean isAdmin) {
+        this.isAdmin = isAdmin;
     }
 
-    public Integer getId() {
-        return id;
-    }
+	public Boolean getIsAdmin() {
+		return isAdmin;
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public void setIsAdmin(Boolean isAdmin) {
+		this.isAdmin = isAdmin;
+	}
 
-    public String getNomeDeUsuario() {
-        return nomeDeUsuario;
-    }
-
-    public void setNomeDeUsuario(String nomeDeUsuario) {
-        this.nomeDeUsuario = nomeDeUsuario;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
     
-    public String getAreaDeResponsabilidade() {
-        return areaDeResponsabilidade;
-    }
-
-    public void setAreaDeResponsabilidade(String areaDeResponsabilidade) {
-        this.areaDeResponsabilidade = areaDeResponsabilidade;
-    }
-
-    @Override
-    public String toString() {
-        return "Administrador{" +
-                "id='" + id + '\'' +
-                ", nomeDeUsuario='" + nomeDeUsuario + '\'' +
-                ", senha='" + senha + '\'' +
-                '}';
-    }
 }

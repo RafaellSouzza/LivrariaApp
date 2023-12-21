@@ -22,9 +22,8 @@ import br.edu.infnet.LivrariaApp.model.service.ItemDePedidoService;
 import br.edu.infnet.LivrariaApp.model.service.LivroService;
 import br.edu.infnet.LivrariaApp.model.service.PedidoService;
 import br.edu.infnet.LivrariaApp.model.service.UsuarioService;
-
-@Component
 @Order(3)
+@Component
 public class PedidosLoader implements ApplicationRunner {
 
 	@Autowired
@@ -56,7 +55,7 @@ public class PedidosLoader implements ApplicationRunner {
 
             ItemDePedido itemDePedido = new ItemDePedido();
             
-            itemDePedido.setPedido(pedidoService.obterPorId(Integer.valueOf(camposItens[0])));
+            itemDePedido.setPedido(pedidoService.obterPorId(Integer.valueOf(camposItens[0])).orElse(null));
             
             Optional<Livro> livro = livroService.buscarPorId(Integer.valueOf(camposItens[1]));
             

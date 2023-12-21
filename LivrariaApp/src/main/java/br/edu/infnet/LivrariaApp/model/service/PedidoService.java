@@ -23,8 +23,8 @@ public class PedidoService {
         return (Collection<Pedido>) pedidoRepository.findAll();
     }
     
-    public Pedido obterPorId(Integer id) {
-        return pedidoRepository.findById(id).get();
+    public Optional<Pedido> obterPorId(Integer id) {
+        return pedidoRepository.findById(id);
     }
 
     public Optional<Pedido> buscarPorId(Integer id) {
